@@ -9,7 +9,6 @@ export default function Home() {
         <ul >
           <li><Link className="text-indigo-600 hover:text-blue-800" href="/google/v3">Google reCAPTCHA v3</Link></li>
           <li><Link className="text-indigo-600 hover:text-blue-800" href="/google/v2">Google reCAPTCHA v2</Link></li>
-          <li><Link className="text-indigo-600 hover:text-blue-800" href="/google/v2-invisible">Google reCAPTCHA v2 (Invisible)</Link></li>
           <li><Link className="text-indigo-600 hover:text-blue-800" href="/hcaptcha">hCaptcha</Link></li>
           <li><Link className="text-indigo-600 hover:text-blue-800" href="/cloudflare/managed">Cloudflare (Managed)</Link></li>
           <li><Link className="text-indigo-600 hover:text-blue-800" href="/cloudflare/non-interactive">Cloudflare (Non-interactive)</Link></li>

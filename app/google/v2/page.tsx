@@ -20,6 +20,7 @@ export default function Home() {
               e.preventDefault()
               setResponse(undefined)
               setLoading(true);
+
               const body = new FormData(formRef.current!)
               const response = await fetch('/api/google/v2', { method: 'POST', body })
               const json = await response.json()
