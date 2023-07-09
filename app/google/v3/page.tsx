@@ -17,42 +17,19 @@ export default function Home() {
           <h2>Google reCAPTCHA v3</h2>
           <div className="py-6">
             <form ref={formRef} onSubmit={async (e) => {
-
               e.preventDefault()
               setResponse(undefined)
               setLoading(true);
-
               //@ts-ignore
-              window.hcaptcha.ready(function () {
+              window.grecaptcha.ready(function () {
                 //@ts-ignore
-                window.hcaptcha.execute().then(async function () {
-                  //@ts-ignore
-                  const token = window.hcaptcha.getResponse()
-
-                  if (!token) {
-                    setLoading(false)
-                    setResponse("Challenge not completed.")
-                    return;
-                  }
-
-                  const response = await fetch('/api/hcaptcha/invisible', { method: 'POST', body: token })
+                window.grecaptcha.execute('6LcnIQYnAAAAAEghOtP6V8_GqmE_7PFMQDZjrX2M', { action: 'submit' }).then(async function (token: string) {
+                  const response = await fetch('/api/google/v3', { method: 'POST', body: token })
                   const json = await response.json()
                   setLoading(false)
                   setResponse(JSON.stringify(json, null, 2))
                 });
               });
-
-              // e.preventDefault()
-              // setResponse(undefined)
-              // setLoading(true);
-              // window.grecaptcha.ready(function () {
-              //   window.grecaptcha.execute('6LcnIQYnAAAAAEghOtP6V8_GqmE_7PFMQDZjrX2M', { action: 'submit' }).then(async function (token: string) {
-              //     const response = await fetch('/api/google/v3', { method: 'POST', body: token })
-              //     const json = await response.json()
-              //     setLoading(false)
-              //     setResponse(JSON.stringify(json, null, 2))
-              //   });
-              // });
             }}>
               <div>
                 <button type="submit">Submit</button>
